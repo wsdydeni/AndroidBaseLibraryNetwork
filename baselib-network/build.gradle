@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 30
+        version  "1.2.0"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("boolean","IS_DEBUG","true")
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+        release {
+            buildConfigField("boolean","IS_DEBUG","false")
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    //noinspection GradleDependency
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+}
